@@ -1,6 +1,3 @@
---[[
-	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
-]]
 --------------------------- Loader ------------------------------
 -- Usable Values
 local ver = "unreleased v1.beta06"
@@ -439,46 +436,42 @@ if placeName == "Piggy_book1" or debug then
 	end)
 end
 
-if placeName == "Doors" then
+if placeName == "Doors_lobby" then
 	newL("gamedetected", "Game Detected: Doors")
-	if placeDesc == "lobby" then
-		newL("gameinfo", "In: Lobby")
+	newL("gameinfo", "In: Lobby")
 
-		local randomElevator = newB("randomElevator", "Join Random Elevator")
-		randomElevator.MouseButton1Click:Connect(function()
-			game.ReplicatedStorage.RemotesFolder.ElevatorJoin:FireServer(workspace.Lobby.LobbyElevators["LobbyElevator-"..math.random(20,27)])
-		end)
+	local randomElevator = newB("randomElevator", "Join Random Elevator")
+	randomElevator.MouseButton1Click:Connect(function()
+		game.ReplicatedStorage.RemotesFolder.ElevatorJoin:FireServer(workspace.Lobby.LobbyElevators["LobbyElevator-"..math.random(20,27)])
+	end)
 
-		local elevatorExit = newB("elevatorExit", "Elevator Exit")
-		elevatorExit.MouseButton1Click:Connect(function()
-			game.ReplicatedStorage.RemotesFolder.ElevatorExit:FireServer()
-		end)
-	end
+	local elevatorExit = newB("elevatorExit", "Elevator Exit")
+	elevatorExit.MouseButton1Click:Connect(function()
+		game.ReplicatedStorage.RemotesFolder.ElevatorExit:FireServer()
+	end)
 end
 
-if placeName == "DoorsHardcore" then
+if placeName == "DoorsHardcore_lobby" then
+	
+elseif string.sub(placeName, 1, 13) == "DoorsHardcore" then
 	newL("gamedetected", "Game Detected: Doors Hardcore")
-	if placeDesc == "lobby" then
-		
-	else
-		newL("gameinfo", "In: GAME")
-		local keyESP = newB("keyESP", "Key ESP")
-		keyESP.MouseButton1Click:Connect(function()
-			if keyESP.Text == "Key ESP" then
-				keyESP.Text = "Key ESP (Enabled)"
-				for _, room in ipairs(workspace.CurrentRooms:GetChildren()) do
-					if room.Assets:FindFirstChild("KeyObtain") then
-						local hl = Instance.new("Highlight", room.Assets:FindFirstChild("KeyObtain"))
-						hl.FillTransparency = .5
-						hl.FillColor = Color3.fromRGB(255,0,0)
-						hl.OutlineTransparency = 0
-						hl.OutlineColor = Color3.fromRGB(200,0,0)
-						hl.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-					end
+	newL("gameinfo", "In: GAME")
+	local keyESP = newB("keyESP", "Key ESP")
+	keyESP.MouseButton1Click:Connect(function()
+		if keyESP.Text == "Key ESP" then
+			keyESP.Text = "Key ESP (Enabled)"
+			for _, room in ipairs(workspace.CurrentRooms:GetChildren()) do
+				if room.Assets:FindFirstChild("KeyObtain") then
+					local hl = Instance.new("Highlight", room.Assets:FindFirstChild("KeyObtain"))
+					hl.FillTransparency = .5
+					hl.FillColor = Color3.fromRGB(255,0,0)
+					hl.OutlineTransparency = 0
+					hl.OutlineColor = Color3.fromRGB(200,0,0)
+					hl.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
 				end
 			end
-		end)
-	end
+		end
+	end)
 end
 
 ms.CanvasSize = UDim2.new(0, 0, 50, 0)
