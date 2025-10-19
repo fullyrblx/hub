@@ -462,7 +462,7 @@ elseif string.sub(placeName, 1, 13) == "DoorsHardcore" then
 			keyESP.Text = "Key ESP (Enabled)"
 			while wait() do
 				for _, room in ipairs(workspace.CurrentRooms:GetChildren()) do
-					if room.Assets:FindFirstChild("KeyObtain") and not room.Assets:FindFirstChild("KeyObtain"):FindFirstChild("Highlight") then
+					if room:FindFirstChild("Assets") and room.Assets:FindFirstChild("KeyObtain") and not room.Assets:FindFirstChild("KeyObtain"):FindFirstChild("Highlight") then
 						local hl = Instance.new("Highlight", room.Assets:FindFirstChild("KeyObtain"))
 						hl.FillTransparency = .5
 						hl.FillColor = Color3.fromRGB(255,0,0)
