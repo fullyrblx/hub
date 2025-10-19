@@ -1,3 +1,6 @@
+--[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
 --------------------------- Loader ------------------------------
 -- Usable Values
 local ver = "unreleased v1.beta06"
@@ -86,6 +89,7 @@ local multiplePlaces = {
 	}
 }
 
+local pn = ""
 local placeName = "[No Detected Game]" -- Current Place Name
 local placeDesc = ""
 
@@ -97,10 +101,10 @@ for i,v in pairs(places) do
 end
 for i,v in pairs(multiplePlaces) do
 	if table.find(v.placeIDs, placeID) then
-		placeName = i.."_"..v.namesIDs[table.find(v.placeIDs, placeID)]
-		print("Detected Place: "..placeName)
+		pn = i.."_"..v.namesIDs[table.find(v.placeIDs, placeID)]
+		print("Detected Place: "..pn)
 
-		local temp = string.split(placeName, "_")
+		local temp = string.split(pn, "_")
 		placeName = temp[0]
 		placeDesc = temp[1]
 	end
