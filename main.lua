@@ -101,12 +101,8 @@ for i,v in pairs(places) do
 end
 for i,v in pairs(multiplePlaces) do
 	if table.find(v.placeIDs, placeID) then
-		pn = i.."_"..v.namesIDs[table.find(v.placeIDs, placeID)]
-		print("Detected Place: "..pn)
-
-		local temp = string.split(pn, "_")
-		placeName = temp[0]
-		placeDesc = temp[1]
+		placeName = i.."_"..v.namesIDs[table.find(v.placeIDs, placeID)]
+		print("Detected Place: "..placeName)
 	end
 end
 
@@ -367,7 +363,7 @@ newL("separator", "")
 newL("game_special", "GAME SPECIAL MODS")
 
 -- PIGGY SPECIAL
-if placeName == "Piggy" or debug then
+if placeName == "Piggy_book1" or debug then
 	newL("game", "Detected: Piggy")
 
 	local piggyvanisher = newB("piggyvanisher", "Piggy Vanisher")
