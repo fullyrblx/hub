@@ -71,8 +71,8 @@ local multiplePlaces = {
 	},
 
 	DoorsHardcore = {
-		placeIDs = {107838858975205},
-		namesIDs = {"lobby"}
+		placeIDs = {107838858975205, 137519142947486},
+		namesIDs = {"lobby", "ingame"}
 	},
 
 	Piggy = {
