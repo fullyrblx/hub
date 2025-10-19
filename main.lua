@@ -452,7 +452,7 @@ if placeName == "Doors_lobby" then
 end
 
 if placeName == "DoorsHardcore_lobby" then
-	
+
 elseif string.sub(placeName, 1, 13) == "DoorsHardcore" then
 	newL("gamedetected", "Game Detected: Doors Hardcore")
 	newL("gameinfo", "In: GAME")
@@ -460,14 +460,16 @@ elseif string.sub(placeName, 1, 13) == "DoorsHardcore" then
 	keyESP.MouseButton1Click:Connect(function()
 		if keyESP.Text == "Key ESP" then
 			keyESP.Text = "Key ESP (Enabled)"
-			for _, room in ipairs(workspace.CurrentRooms:GetChildren()) do
-				if room.Assets:FindFirstChild("KeyObtain") then
-					local hl = Instance.new("Highlight", room.Assets:FindFirstChild("KeyObtain"))
-					hl.FillTransparency = .5
-					hl.FillColor = Color3.fromRGB(255,0,0)
-					hl.OutlineTransparency = 0
-					hl.OutlineColor = Color3.fromRGB(200,0,0)
-					hl.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+			while wait() do
+				for _, room in ipairs(workspace.CurrentRooms:GetChildren()) do
+					if room.Assets:FindFirstChild("KeyObtain") and not room.Assets:FindFirstChild("KeyObtain"):FindFirstChild("Highlight") then
+						local hl = Instance.new("Highlight", room.Assets:FindFirstChild("KeyObtain"))
+						hl.FillTransparency = .5
+						hl.FillColor = Color3.fromRGB(255,0,0)
+						hl.OutlineTransparency = 0
+						hl.OutlineColor = Color3.fromRGB(200,0,0)
+						hl.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+					end
 				end
 			end
 		end
